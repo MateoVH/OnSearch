@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OnSearch.Web.Data;
+using OnSearch.Web.Helpers;
 
 namespace OnSearch.Web
 {
@@ -38,6 +39,10 @@ namespace OnSearch.Web
                 cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+
+            services.AddScoped<BlobHelper>();
+            services.AddScoped<ConverterHelper>();
+            services.AddScoped<CombosHelper>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

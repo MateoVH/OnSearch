@@ -42,7 +42,7 @@
                                 </td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i></a>
-                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="glyphicon glyphicon-trash"></i></button>
+                                    <button onclick="deleteItem(this)" type="button" data-assigned-id="@item.Id" class="btn btn-danger glyphicon glyphicon-trash" title="Eliminar Registro"></button>
                                 </td>
                             </tr>
                         }
@@ -53,28 +53,28 @@
     </div>
 </div>
 
+<partial name="_DeleteDialog" />
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(document).ready(function () {
-                $('#MyTable').DataTable();
-            });
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#MyTable').DataTable();
+    });
+    var id = "";
+    function deleteItem(elem) {
+        id = $(elem).data('assigned-id');
+        //alert(id);
+        $("#deleteDialog").modal('show');
+    }
+    $("#btnNoDelete").click(function () {
+        $("#deleteDialog").modal('hide');
+        return false;
+    });
+    $("#btnYesDelete").click(function () {
+        window.location.href = '/Categories/Delete/' + id;
+    });
+</script>
 
-            var id = "";
-            function deleteItem(elem) {
-                id = $(elem).data('assigned-id');
-                //alert(id);
-                $("#deleteDialog").modal('show');
-            }
-            $("#btnNoDelete").click(function () {
-                $("#deleteDialog").modal('hide');
-                return false;
-            });
-            $("#btnYesDelete").click(function () {
-                window.location.href = '/Categories/Delete/' + id;
-            });
-        });
-    </script>
 }

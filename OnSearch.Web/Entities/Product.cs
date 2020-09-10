@@ -37,7 +37,7 @@ namespace OnSearch.Web.Entities
         //TODO: Pending to put the correct paths
         [Display(Name = "Image")]
         public string ImageFullPath => ProductImages == null || ProductImages.Count == 0
-            ? $"https://localhost:44390/images/noimage.png"
+            ? $"https://localhost:44327/images/noimage.png"
             : ProductImages.FirstOrDefault().ImageFullPath;
 
     }

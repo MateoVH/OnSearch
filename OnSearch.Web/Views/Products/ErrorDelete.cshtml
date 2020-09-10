@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Error al Eliminar";
+}
+
+<style>
+    img {
+        max-width: 100%;
+        height: auto;
+        width: auto\9; /* ie8 */
+    }
+
+    #inner {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
+
+
+<div id="inner" class="row" style="padding-top:10px;">
+    <img src="~/images/Stop.png" width="200" /> <br /><br />
+    <h3>Compra histórico no se puede Eliminar porque está siendo referenciada por otros registros.</h3><br /><br />
+    <a asp-action="Index" asp-controller="Products" class="btn btn-success">Regresar al Listado</a>
+</div>
