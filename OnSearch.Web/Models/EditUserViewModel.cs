@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity;
-using OnSearch.Web.Enums;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OnSearch.Web.Entities
+namespace OnSearch.Web.Models
 {
-    public class User : IdentityUser
+    public class EditUserViewModel
     {
+        public string Id { get; set; }
+
         [MaxLength(20)]
         [Required]
         public string Document { get; set; }
@@ -27,6 +29,10 @@ namespace OnSearch.Web.Entities
         //[MaxLength(100)]
         //public string Address { get; set; }
 
+        [Display(Name = "Phone Number")]
+        [MaxLength(20)]
+        public string PhoneNumber { get; set; }
+
         [Display(Name = "Image")]
         public Guid ImageId { get; set; }
 
@@ -35,14 +41,9 @@ namespace OnSearch.Web.Entities
             ? $"https://localhost:44327/images/noimage.png"
             : $"https://onsale.blob.core.windows.net/users/{ImageId}";
 
-        [Display(Name = "User Type")]
-        public UserType UserType { get; set; }
+        [Display(Name = "Image")]
+        public IFormFile ImageFile { get; set; }
 
-        [Display(Name = "User")]
-        public string FullName => $"{FirstName} {LastName}";
-
-        [Display(Name = "User")]
-        public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
     }
 
 }

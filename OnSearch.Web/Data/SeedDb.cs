@@ -23,7 +23,7 @@ namespace OnSearch.Web.Data
         {
             await _context.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
-            await CheckUserAsync("1010", "Mateo", " ", "mateovergara10@outlook.com", "322 311 4620", "Calle Luna Calle Sol", UserType.Admin);
+            await CheckUserAsync("1010", "Mateo", "Vergara", "mateovergara10@outlook.com", "322 311 4620", UserType.Admin);
         }
 
         private async Task CheckRolesAsync()
@@ -38,7 +38,6 @@ namespace OnSearch.Web.Data
             string lastName,
             string email,
             string phone,
-            string address,
             UserType userType)
         {
             User user = await _userHelper.GetUserAsync(email);
@@ -51,13 +50,16 @@ namespace OnSearch.Web.Data
                     Email = email,
                     UserName = email,
                     PhoneNumber = phone,
-                    Address = address,
                     Document = document,
                     UserType = userType
                 };
 
                 await _userHelper.AddUserAsync(user, "123456");
                 await _userHelper.AddUserToRoleAsync(user, userType.ToString());
+
+                string token = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
+                await _userHelper.ConfirmEmailAsync(user, token);
+
             }
 
             return user;
