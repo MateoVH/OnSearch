@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnSearch.Web.Data;
 using OnSearch.Web.Entities;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace OnSearch.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
         private readonly DataContext _context;
