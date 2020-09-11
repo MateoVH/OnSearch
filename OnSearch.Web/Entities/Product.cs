@@ -9,6 +9,8 @@ namespace OnSearch.Web.Entities
 {
     public class Product
     {
+        //public int UserId { get; set; }
+
         public int Id { get; set; }
 
         [MaxLength(50)]
@@ -24,8 +26,8 @@ namespace OnSearch.Web.Entities
         [DisplayName("Is Active")]
         public bool IsActive { get; set; }
 
-        [DisplayName("Is Starred")]
-        public bool IsStarred { get; set; }
+        //[DisplayName("Is Starred")]
+        //public bool IsStarred { get; set; }
 
         public Category Category { get; set; }
 
@@ -34,11 +36,12 @@ namespace OnSearch.Web.Entities
         [DisplayName("Product Images Number")]
         public int ProductImagesNumber => ProductImages == null ? 0 : ProductImages.Count;
 
-        //TODO: Pending to put the correct paths
         [Display(Name = "Image")]
         public string ImageFullPath => ProductImages == null || ProductImages.Count == 0
             ? $"https://localhost:44327/images/noimage.png"
             : ProductImages.FirstOrDefault().ImageFullPath;
 
+        //public User User { get; set; }
+      
     }
 }

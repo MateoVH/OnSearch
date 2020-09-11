@@ -49,7 +49,7 @@ namespace OnSearch.Web.Helpers
                 Description = model.Description,
                 Id = isNew ? 0 : model.Id,
                 IsActive = model.IsActive,
-                IsStarred = model.IsStarred,
+                //IsStarred = model.IsStarred,
                 Name = model.Name,
                 Price = model.Price,
                 ProductImages = model.ProductImages
@@ -66,7 +66,7 @@ namespace OnSearch.Web.Helpers
                 Description = product.Description,
                 Id = product.Id,
                 IsActive = product.IsActive,
-                IsStarred = product.IsStarred,
+                //IsStarred = product.IsStarred,
                 Name = product.Name,
                 Price = product.Price,
                 ProductImages = product.ProductImages
