@@ -37,12 +37,16 @@
                         <li><a asp-area="" asp-controller="Categories" asp-action="Index">Categoria</a></li>
                     }
 
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                     {
-
-                <li><a asp-area="" asp-controller="Products" asp-action="Index">Products</a></li>
+                        <li><a asp-area="" asp-controller="Companies" asp-action="Create">Empresa/Local</a></li>
                     }
 
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("UserS"))
+                    {
+                        <li><a asp-area="" asp-controller="Companies" asp-action="Index">Empresa/Local</a></li>
+                        <li><a asp-area="" asp-controller="Products" asp-action="Index">Products</a></li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)
@@ -54,6 +58,8 @@
                     {
                         <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
                     }
+
+
                 </ul>
 
             </div>

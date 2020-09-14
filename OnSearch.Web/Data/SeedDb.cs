@@ -23,13 +23,14 @@ namespace OnSearch.Web.Data
         {
             await _context.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
-            await CheckUserAsync("1010", "Mateo", "Vergara", "mateovergara10@outlook.com", "322 311 4620", UserType.Admin);
+            await CheckUserAsync("1010", "Mateo", "Vergara", "mateovergara10@outlook.com", "322 311 4620", UserType.User);
         }
 
         private async Task CheckRolesAsync()
         {
             await _userHelper.CheckRoleAsync(UserType.Admin.ToString());
             await _userHelper.CheckRoleAsync(UserType.User.ToString());
+            await _userHelper.CheckRoleAsync(UserType.UserS.ToString());
         }
 
         private async Task<User> CheckUserAsync(

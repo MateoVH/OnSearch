@@ -20,6 +20,8 @@ namespace OnSearch.Web.Data
 
         public DbSet<ProductImage> ProductImages { get; set; }
 
+        public DbSet<Company> Companies { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

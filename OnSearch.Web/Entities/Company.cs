@@ -10,11 +10,11 @@ namespace OnSearch.Web.Entities
     {
         public int Id { get; set; }
 
-        public int UserId { get; set; }
+        //public int UserId { get; set; }
 
         [MaxLength(50)]
         [Required]
-        [Display(Name = "Nombre del Local o Empresa")]
+        [Display(Name = "Local/Empresa")]
         public string Name { get; set; }
 
         [MaxLength(20)]
@@ -25,8 +25,8 @@ namespace OnSearch.Web.Entities
         [MaxLength(20)]
         [Required]
         [Display(Name = "Número de contacto")]
-        public int Number { get; set; }
+        public string Number { get; set; }
 
-        public User User { get; set; }
+        //public User User { get; set; }
     }
 }

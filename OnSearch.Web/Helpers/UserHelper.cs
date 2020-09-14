@@ -136,6 +136,25 @@ namespace OnSearch.Web.Helpers
             return await _userManager.ResetPasswordAsync(user, token, password);
         }
 
+        public async Task<IdentityResult> RemoveFromRoleAsync(User user, string roleName)
+        {
+            return await _userManager.RemoveFromRoleAsync(user, roleName);
+        }
+        public async Task RefreshSignInAsync(User user)
+        {
+           await _signInManager.RefreshSignInAsync(user);
+        }
+
+        
+
+
+        //public async Task<IdentityResult> ChangeRoleAsync(string email, string roleName)
+        //{
+        //    string usertype = "UserS";
+        //    User user = await GetUserAsync(email);
+        //    await AddUserToRoleAsync(user, usertype);           
+        //}
+
     }
 
 }
