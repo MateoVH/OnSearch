@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnSearch.Web.Data;
 using OnSearch.Web.Entities;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace OnSearch.Web.Controllers
 {
+    //[Authorize(Roles = "UserS")]
     public class ProductsController : Controller
     {
         private readonly DataContext _context;
@@ -26,14 +28,16 @@ namespace OnSearch.Web.Controllers
             _converterHelper = converterHelper;
         }
 
+        [Authorize(Roles = "UserS")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products
+            return View(await _context.Products.Where(p => p.UserF == User.Identity.Name)
                 .Include(p => p.Category)
                 .Include(p => p.ProductImages)
                 .ToListAsync());
         }
 
+        [Authorize(Roles = "UserS")]
         public IActionResult Create()
         {
             ProductViewModel model = new ProductViewModel
@@ -45,12 +49,15 @@ namespace OnSearch.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "UserS")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductViewModel model)
         {
+            model.UserF = User.Identity.Name;
             if (ModelState.IsValid)
             {
+                
                 try
                 {
                     Product product = await _converterHelper.ToProductAsync(model, true);
@@ -89,6 +96,7 @@ namespace OnSearch.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "UserS")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -109,6 +117,7 @@ namespace OnSearch.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "UserS")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ProductViewModel model)
@@ -156,6 +165,7 @@ namespace OnSearch.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "UserS")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -175,6 +185,7 @@ namespace OnSearch.Web.Controllers
             return View(product);
         }
 
+        [Authorize(Roles = "UserS")]
         public async Task<IActionResult> AddImage(int? id)
         {
             if (id == null)
@@ -192,6 +203,7 @@ namespace OnSearch.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "UserS")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddImage(AddProductImageViewModel model)
@@ -230,7 +242,7 @@ namespace OnSearch.Web.Controllers
         }
 
 
-
+        [Authorize(Roles = "UserS")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -264,6 +276,7 @@ namespace OnSearch.Web.Controllers
             }
         }
 
+        [Authorize(Roles = "UserS")]
         public async Task<IActionResult> DeleteImage(int? id)
         {
             if (id == null)
@@ -285,9 +298,37 @@ namespace OnSearch.Web.Controllers
         }
 
 
+        [Authorize(Roles = "UserS")]
         public IActionResult ErrorDelete()
         {
             return this.View();
+        }
+
+        public async Task<IActionResult> SProduct()
+        {
+            return View(await _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.ProductImages)
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> Details2(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Product product = await _context.Products
+                .Include(c => c.Category)
+                .Include(c => c.ProductImages)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
         }
 
     }

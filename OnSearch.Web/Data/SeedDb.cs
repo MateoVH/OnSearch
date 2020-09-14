@@ -23,7 +23,9 @@ namespace OnSearch.Web.Data
         {
             await _context.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
-            await CheckUserAsync("1010", "Mateo", "Vergara", "mateovergara10@outlook.com", "322 311 4620", UserType.User);
+            await CheckUserAsync("1010", "Mateo", "Vergara", "mateovergara10@outlook.com", "322 311 4620", UserType.Admin);
+            await CheckUserAsync("1010", "Mateo", "Vergara", "mateovergara11@outlook.com", "322 311 4620", UserType.User);
+            await CheckUserAsync("1010", "Mateo", "Vergara", "mateovergara12@outlook.com", "322 311 4620", UserType.User);
         }
 
         private async Task CheckRolesAsync()

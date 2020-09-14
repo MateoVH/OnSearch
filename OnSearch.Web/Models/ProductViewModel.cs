@@ -15,6 +15,7 @@ namespace OnSearch.Web.Models
         [Range(1, int.MaxValue, ErrorMessage = "You must select a category.")]
         [Required]
         public int CategoryId { get; set; }
+
         public IFormFile ImageFile { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }        
     }

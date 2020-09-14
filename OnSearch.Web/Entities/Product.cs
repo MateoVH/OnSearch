@@ -9,9 +9,11 @@ namespace OnSearch.Web.Entities
 {
     public class Product
     {
-        //public int UserId { get; set; }
 
         public int Id { get; set; }
+
+        // TODO: REFERENCIAR CON LA EMPRESA
+        public string UserF { get; set; }
 
         [MaxLength(50)]
         [Required]
@@ -26,9 +28,6 @@ namespace OnSearch.Web.Entities
         [DisplayName("Is Active")]
         public bool IsActive { get; set; }
 
-        //[DisplayName("Is Starred")]
-        //public bool IsStarred { get; set; }
-
         public Category Category { get; set; }
 
         public ICollection<ProductImage> ProductImages { get; set; }
@@ -42,6 +41,7 @@ namespace OnSearch.Web.Entities
             : ProductImages.FirstOrDefault().ImageFullPath;
 
         //public User User { get; set; }
+        //public Company Company { get; set; }
       
     }
 }

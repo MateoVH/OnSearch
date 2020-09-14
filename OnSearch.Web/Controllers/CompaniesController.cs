@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,7 +28,7 @@ namespace OnSearch.Web.Controllers
         [Authorize(Roles = "UserS")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Companies.ToListAsync());
+            return View(await _context.Companies.Where(p => p.UserF == User.Identity.Name).FirstAsync());
         }
 
         // GET: Companies/Details/5
@@ -64,6 +64,7 @@ namespace OnSearch.Web.Controllers
         [Authorize(Roles = "User")]
         public async Task<IActionResult> Create([Bind("Id,Name,NIT,Number")] Company company)
         {
+            company.UserF = User.Identity.Name;
             if (ModelState.IsValid)
             {
                 _context.Add(company);

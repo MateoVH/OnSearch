@@ -52,7 +52,9 @@ namespace OnSearch.Web.Helpers
                 //IsStarred = model.IsStarred,
                 Name = model.Name,
                 Price = model.Price,
-                ProductImages = model.ProductImages
+                ProductImages = model.ProductImages,
+                UserF = model.UserF
+                
             };
         }
 
@@ -69,7 +71,9 @@ namespace OnSearch.Web.Helpers
                 //IsStarred = product.IsStarred,
                 Name = product.Name,
                 Price = product.Price,
-                ProductImages = product.ProductImages
+                ProductImages = product.ProductImages,
+                UserF = product.UserF
+                
             };
         }
 
