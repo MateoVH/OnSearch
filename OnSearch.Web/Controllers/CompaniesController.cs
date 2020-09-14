@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,7 @@ namespace OnSearch.Web.Controllers
         }
 
         // GET: Companies
+        [Authorize(Roles = "UserS")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Companies.ToListAsync());
@@ -48,6 +50,7 @@ namespace OnSearch.Web.Controllers
         }
 
         // GET: Companies/Create
+        [Authorize(Roles = "User")]
         public IActionResult Create()
         {
             return View();
@@ -58,6 +61,7 @@ namespace OnSearch.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Create([Bind("Id,Name,NIT,Number")] Company company)
         {
             if (ModelState.IsValid)
@@ -145,7 +149,15 @@ namespace OnSearch.Web.Controllers
             {
                 _context.Companies.Remove(unit);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Create));
+                string email = User.Identity.Name;
+                User user = await _userHelper.GetUserAsync(email);
+                user.UserType = UserType.UserS;
+                await _userHelper.RemoveFromRoleAsync(user, "UserS");
+                await _userHelper.AddUserToRoleAsync(user, "User");
+                await _userHelper.UpdateUserAsync(user);
+                await _userHelper.RefreshSignInAsync(user);
+
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {

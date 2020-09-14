@@ -11,6 +11,7 @@ namespace OnSearch.Web.Entities
         public int Id { get; set; }
 
         //public int UserId { get; set; }
+        public string UserF { get; set; }
 
         [MaxLength(50)]
         [Required]

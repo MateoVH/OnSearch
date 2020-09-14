@@ -5,23 +5,20 @@
 }
 
 
-<!DOCTYPE html>
 
-<html>
-<head>
+@*<head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-</head>
+</head>*@
+
+<hr />
 <body>
-    <p>
+    @*<p>
         <a asp-action="Create">Create New</a>
-    </p>
+    </p>*@
     <table class="table">
         <thead>
             <tr>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.UserId)
-                    </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
@@ -38,9 +35,6 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.UserId)
-                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
@@ -52,7 +46,7 @@
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
                         <button onclick="deleteItem(this)" type="button" data-assigned-id="@item.Id" class="btn btn-danger glyphicon glyphicon-trash" title="Eliminar Registro"></button>
                     </td>
                 </tr>
@@ -60,7 +54,7 @@
         </tbody>
     </table>
 </body>
-</html>
+
 
 <partial name="_DeleteDialog" />
 
