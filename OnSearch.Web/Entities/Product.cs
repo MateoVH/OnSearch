@@ -17,25 +17,29 @@ namespace OnSearch.Web.Entities
 
         [MaxLength(50)]
         [Required]
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
 
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Descripción")]
         public string Description { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:C2}")]
+        [Display(Name = "Precio")]
         public decimal Price { get; set; }
 
-        [DisplayName("Is Active")]
+        [DisplayName("En Stock?")]
         public bool IsActive { get; set; }
 
+        [Display(Name = "Categoría")]
         public Category Category { get; set; }
 
         public ICollection<ProductImage> ProductImages { get; set; }
 
-        [DisplayName("Product Images Number")]
+        [DisplayName("Número de imagenes")]
         public int ProductImagesNumber => ProductImages == null ? 0 : ProductImages.Count;
 
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public string ImageFullPath => ProductImages == null || ProductImages.Count == 0
             ? $"https://localhost:44327/images/noimage.png"
             : ProductImages.FirstOrDefault().ImageFullPath;

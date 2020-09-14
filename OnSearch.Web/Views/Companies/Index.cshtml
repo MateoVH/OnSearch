@@ -1,7 +1,7 @@
 ﻿@model OnSearch.Web.Entities.Company
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Local/Empresa";
 }
 
 
@@ -32,7 +32,7 @@
     </dl>
 
     <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
         <button onclick="deleteItem(this)" type="button" data-assigned-id="@Model.Id" class="btn btn-danger glyphicon glyphicon-trash" title="Eliminar Registro"></button>
     </div>
 </div>

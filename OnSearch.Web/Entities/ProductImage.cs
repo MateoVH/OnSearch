@@ -10,11 +10,11 @@ namespace OnSearch.Web.Entities
     {
         public int Id { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public Guid ImageId { get; set; }
 
         //TODO: Pending to put the correct paths
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44327/images/noimage.png"
             : $"https://onsale.blob.core.windows.net/products/{ImageId}";

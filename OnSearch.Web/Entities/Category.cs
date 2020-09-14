@@ -12,12 +12,13 @@ namespace OnSearch.Web.Entities
 
         [MaxLength(50)]
         [Required]
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public Guid ImageId { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44327/images/noimage.png"
             : $"https://onsale.blob.core.windows.net/categories/{ImageId}";

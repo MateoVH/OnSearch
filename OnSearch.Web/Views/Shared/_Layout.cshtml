@@ -45,18 +45,18 @@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("UserS"))
                     {
                         <li><a asp-area="" asp-controller="Companies" asp-action="Index">Empresa/Local</a></li>
-                        <li><a asp-area="" asp-controller="Products" asp-action="Index">Products</a></li>
+                        <li><a asp-area="" asp-controller="Products" asp-action="Index">Producto</a></li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li><a asp-area="" asp-controller="Account" asp-action="ChangeUser">@User.Identity.Name</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Salir</a></li>
                     }
                     else
                     {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Entrar</a></li>
                     }
                 </ul>
 
@@ -70,7 +70,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2020 - OnSearch.Web</p>
+            <p>&copy; 2020 - COMO SE LLAME</p>
         </footer>
     </div>
 

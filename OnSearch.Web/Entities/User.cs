@@ -14,12 +14,12 @@ namespace OnSearch.Web.Entities
         [Required]
         public string Document { get; set; }
 
-        [Display(Name = "First Name")]
+        [Display(Name = "Primer Nombre")]
         [MaxLength(50)]
         [Required]
         public string FirstName { get; set; }
 
-        [Display(Name = "Last Name")]
+        [Display(Name = "Apellido")]
         [MaxLength(50)]
         [Required]
         public string LastName { get; set; }
@@ -27,21 +27,21 @@ namespace OnSearch.Web.Entities
         //[MaxLength(100)]
         //public string Address { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public Guid ImageId { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44327/images/noimage.png"
             : $"https://onsale.blob.core.windows.net/users/{ImageId}";
 
-        [Display(Name = "User Type")]
+        [Display(Name = "Rango")]
         public UserType UserType { get; set; }
 
-        [Display(Name = "User")]
+        [Display(Name = "Usuario")]
         public string FullName => $"{FirstName} {LastName}";
 
-        [Display(Name = "User")]
+        [Display(Name = "Usuario")]
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
     }
 
