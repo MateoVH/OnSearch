@@ -16,12 +16,12 @@ namespace OnSearch.Web.Models
         [Required]
         public string Document { get; set; }
 
-        [Display(Name = "First Name")]
+        [Display(Name = "Nombre")]
         [MaxLength(50)]
         [Required]
         public string FirstName { get; set; }
 
-        [Display(Name = "Last Name")]
+        [Display(Name = "Apellidos")]
         [MaxLength(50)]
         [Required]
         public string LastName { get; set; }
@@ -29,19 +29,19 @@ namespace OnSearch.Web.Models
         //[MaxLength(100)]
         //public string Address { get; set; }
 
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Número de Telefono")]
         [MaxLength(20)]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public Guid ImageId { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44327/images/noimage.png"
             : $"https://onsale.blob.core.windows.net/users/{ImageId}";
 
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public IFormFile ImageFile { get; set; }
 
     }

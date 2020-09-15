@@ -10,7 +10,7 @@ namespace OnSearch.Web.Models
 {
     public class CategoryViewModel : Category
     {
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         public IFormFile ImageFile { get; set; }
     }
 

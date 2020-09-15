@@ -8,22 +8,22 @@ namespace OnSearch.Web.Models
 {
     public class ChangePasswordViewModel
     {
-        [Display(Name = "Current password")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [Display(Name = "Actual Contraseña")]
+        [Required(ErrorMessage = "El campo {0} es Requerido")]
         [DataType(DataType.Password)]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "The {0} field must contain between {2} and {1} characters.")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "El {0} campo debe estar entre {2} y {1} Caracteres")]
         public string OldPassword { get; set; }
 
-        [Display(Name = "New password")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [Display(Name = "Nueva Contraseña")]
+        [Required(ErrorMessage = "El campo {0} es Requerido")]
         [DataType(DataType.Password)]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "The {0} field must contain between {2} and {1} characters.")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "El {0} campo debe estar entre {2} y {1} Caracteres")]
         public string NewPassword { get; set; }
 
-        [Display(Name = "Password confirm")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [Display(Name = "Confirma Contraseña")]
+        [Required(ErrorMessage = "El campo {0} es Requerido")]
         [DataType(DataType.Password)]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "The {0} field must contain between {2} and {1} characters.")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "El {0} campo debe estar entre {2} y {1} Caracteres")]
         [Compare("NewPassword")]
         public string Confirm { get; set; }
     }

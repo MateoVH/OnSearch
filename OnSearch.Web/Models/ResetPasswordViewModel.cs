@@ -13,12 +13,12 @@ namespace OnSearch.Web.Models
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "The {0} field must contain between {2} and {1} characters.")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "El {0} campo debe estar entre {2} y {1} Caracteres")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "The {0} field must contain between {2} and {1} characters.")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "El {0} campo debe estar entre {2} y {1} Caracteres")]
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }

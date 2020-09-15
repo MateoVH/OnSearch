@@ -9,11 +9,11 @@ namespace OnSearch.Web.Models
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage ="Debe ser un correo Válido")]
         public string Username { get; set; }
 
         [Required]
-        [MinLength(6)]
+        [MinLength(6 , ErrorMessage ="Debe tener mínimo 6 caracteres")]
         public string Password { get; set; }
 
         public bool RememberMe { get; set; }

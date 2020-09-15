@@ -116,7 +116,7 @@ namespace OnSearch.Web.Controllers
                     $"Porfavor clic este link:</br></br><a href = \"{tokenLink}\">Confirmar Email</a>");
                 if (response.IsSuccess)
                 {
-                    ViewBag.Message = "The instructions to allow your user has been sent to email.";
+                    ViewBag.Message = "Las intrecciones fueron enviadas a tu Correo";
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -258,7 +258,7 @@ namespace OnSearch.Web.Controllers
                 _mailHelper.SendMail(model.Email, "Resetear Contraseña", $"<h1>Resetea la Contraseña</h1>" +
                     $"Para resetear la Contraseña clic al siguiente Link:</br></br>" +
                     $"<a href = \"{link}\">Resetear Contraseña</a>");
-                ViewBag.Message = "The instructions to recover your password has been sent to email.";
+                ViewBag.Message = "Las instrucciones fueron enviadas a tu Correo";
                 return RedirectToAction("Index", "Home");
 
             }

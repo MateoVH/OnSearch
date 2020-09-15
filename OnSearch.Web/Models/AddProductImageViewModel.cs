@@ -11,7 +11,7 @@ namespace OnSearch.Web.Models
     {
         public int ProductId { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "Imagen")]
         [Required]
         public IFormFile ImageFile { get; set; }
     }

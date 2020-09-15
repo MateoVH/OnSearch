@@ -11,8 +11,8 @@ namespace OnSearch.Web.Models
 {
     public class ProductViewModel : Product
     {
-        [Display(Name = "Category")]
-        [Range(1, int.MaxValue, ErrorMessage = "You must select a category.")]
+        [Display(Name = "Categoria")]
+        [Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar una Categoria")]
         [Required]
         public int CategoryId { get; set; }
 
