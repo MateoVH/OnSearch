@@ -61,7 +61,7 @@ namespace OnSearch.Web.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                ModelState.AddModelError(string.Empty, "Email or password incorrect.");
+                ModelState.AddModelError(string.Empty, "Email o Contraseña Incorrecto");
             }
 
             return View(model);
@@ -100,7 +100,7 @@ namespace OnSearch.Web.Controllers
                 User user = await _userHelper.AddUserAsync(model, imageId, UserType.User);
                 if (user == null)
                 {
-                    ModelState.AddModelError(string.Empty, "This email is already used.");
+                    ModelState.AddModelError(string.Empty, "Este Email ya está en uso");
                     return View(model);
                 }
 
@@ -111,13 +111,13 @@ namespace OnSearch.Web.Controllers
                     token = myToken
                 }, protocol: HttpContext.Request.Scheme);
 
-                Response response = _mailHelper.SendMail(model.Username, "Email confirmation", $"<h1>Email Confirmation</h1>" +
-                    $"To allow the user, " +
-                    $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
+                Response response = _mailHelper.SendMail(model.Username, "Confirmación de Email", $"<h1>Confirmación de Email</h1>" +
+                    $"Para permitir al Usuario, " +
+                    $"Porfavor clic este link:</br></br><a href = \"{tokenLink}\">Confirmar Email</a>");
                 if (response.IsSuccess)
                 {
                     ViewBag.Message = "The instructions to allow your user has been sent to email.";
-                    return View(model);
+                    return RedirectToAction("Index", "Home");
                 }
 
                 ModelState.AddModelError(string.Empty, response.Message);
@@ -203,7 +203,7 @@ namespace OnSearch.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "User no found.");
+                    ModelState.AddModelError(string.Empty, "Usuario no Encontrado");
                 }
             }
 
@@ -246,7 +246,7 @@ namespace OnSearch.Web.Controllers
                 User user = await _userHelper.GetUserAsync(model.Email);
                 if (user == null)
                 {
-                    ModelState.AddModelError(string.Empty, "The email doesn't correspont to a registered user.");
+                    ModelState.AddModelError(string.Empty, "El Email no Corresponde");
                     return View(model);
                 }
 
@@ -255,11 +255,11 @@ namespace OnSearch.Web.Controllers
                     "ResetPassword",
                     "Account",
                     new { token = myToken }, protocol: HttpContext.Request.Scheme);
-                _mailHelper.SendMail(model.Email, "Password Reset", $"<h1>Password Reset</h1>" +
-                    $"To reset the password click in this link:</br></br>" +
-                    $"<a href = \"{link}\">Reset Password</a>");
+                _mailHelper.SendMail(model.Email, "Resetear Contraseña", $"<h1>Resetea la Contraseña</h1>" +
+                    $"Para resetear la Contraseña clic al siguiente Link:</br></br>" +
+                    $"<a href = \"{link}\">Resetear Contraseña</a>");
                 ViewBag.Message = "The instructions to recover your password has been sent to email.";
-                return View();
+                return RedirectToAction("Index", "Home");
 
             }
 
@@ -280,15 +280,15 @@ namespace OnSearch.Web.Controllers
                 IdentityResult result = await _userHelper.ResetPasswordAsync(user, model.Token, model.Password);
                 if (result.Succeeded)
                 {
-                    ViewBag.Message = "Password reset successful.";
-                    return View();
+                    ViewBag.Message = "Contraseña Resetada!";
+                    return RedirectToAction("Index", "Home");
                 }
 
-                ViewBag.Message = "Error while resetting the password.";
+                ViewBag.Message = "Error";
                 return View(model);
             }
 
-            ViewBag.Message = "User not found.";
+            ViewBag.Message = "Usuario No encontrado";
             return View(model);
         }
 

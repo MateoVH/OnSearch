@@ -28,7 +28,7 @@ namespace OnSearch.Web.Helpers
 
             list.Insert(0, new SelectListItem
             {
-                Text = "[Select a category...]",
+                Text = "[Seleccione una Categoria...]",
                 Value = "0"
             });
 

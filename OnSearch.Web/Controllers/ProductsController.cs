@@ -306,7 +306,7 @@ namespace OnSearch.Web.Controllers
 
         public async Task<IActionResult> SProduct()
         {
-            return View(await _context.Products
+            return View(await _context.Products.Where(p => p.IsActive == true)
                 .Include(p => p.Category)
                 .Include(p => p.ProductImages)
                 .ToListAsync());
