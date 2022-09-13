@@ -8,6 +8,8 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.2.43/fluent.css" />
+        <script src="https://cdn.syncfusion.com/ej2/20.2.43/dist/ej2.min.js"></script>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -31,6 +33,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Products" asp-action="SProduct">Compra</a></li>
+                    <li><a asp-area="" asp-controller="ScheduleDatas" asp-action="Index">Scadurl</a></li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
 
@@ -77,6 +80,7 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="https://cdn.syncfusion.com/ej2/20.2.43/dist/ej2.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
@@ -94,7 +98,9 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
+    <ejs-scripts></ejs-scripts>
+    <!-- Syncfusion ASP.NET MVC Script Manager -->
     @RenderSection("Scripts", required: false)
+    @RenderSection("ControlsSection", required: false)
 </body>
 </html>

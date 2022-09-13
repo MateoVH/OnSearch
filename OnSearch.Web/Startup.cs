@@ -13,6 +13,7 @@ using OnSearch.Web.Entities;
 using OnSearch.Web.Helpers;
 using System.Globalization;
 using System.Text;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace OnSearch.Web
 {
@@ -73,6 +74,7 @@ namespace OnSearch.Web
                 cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+
             services.AddScoped<MailHelper>();
             services.AddScoped<BlobHelper>();
             services.AddScoped<ConverterHelper>();
@@ -115,6 +117,8 @@ namespace OnSearch.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDE4MTk2QDMxMzgyZTM0MmUzMFI0dTEvV2ZqaEpVNGFxcjFLangzS1VMYVRTbThaRkJVc1VxVE4xOFFzVGM9");
         }
     }
 }

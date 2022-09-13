@@ -22,6 +22,8 @@ namespace OnSearch.Web.Data
 
         public DbSet<Company> Companies { get; set; }
 
+        public DbSet<ScheduleData> ScheduleDatas { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +37,8 @@ namespace OnSearch.Web.Data
             .HasIndex(t => t.Name)
             .IsUnique();
         }
+
+
     }
 
 }

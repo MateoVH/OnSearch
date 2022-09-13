@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnSearch.Web.Data;
 
 namespace OnSearch.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220911020933_pd")]
+    partial class pd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -227,11 +229,19 @@ namespace OnSearch.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("EndTime");
+                    b.Property<string>("Comments");
 
-                    b.Property<DateTime>("StartTime");
+                    b.Property<bool>("IsAllDay");
 
-                    b.Property<string>("Subject");
+                    b.Property<bool>("IsRecurrence");
+
+                    b.Property<DateTime>("ProgramEndTime");
+
+                    b.Property<string>("ProgramName");
+
+                    b.Property<DateTime>("ProgramStartTime");
+
+                    b.Property<string>("RecurrenceRule");
 
                     b.HasKey("Id");
 
